@@ -35,7 +35,7 @@ costFunc = @(p) nnCostFunction(p, input_layer_size, hidden_layer_size, ...
 numgrad = computeNumericalGradient(costFunc, nn_params);
 
 % Visually examine the two gradient computations.  The two columns
-% you get should be very similar. 
+% you get should be very similar.
 disp([numgrad grad]);
 fprintf(['The above two columns you get should be very similar.\n' ...
          '(Left-Your Numerical Gradient, Right-Analytical Gradient)\n\n']);
