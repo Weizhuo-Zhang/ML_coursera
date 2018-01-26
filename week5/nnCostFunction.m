@@ -82,18 +82,16 @@ reg_sum = lambda *  1. / (2. * m) * (sum(tem_theta1(:).^2) + sum(tem_theta2(:).^
 J = J + reg_sum;
 
 delta3 = a3 - y_label;
-delta2 = delta3 * Theta2 .* sigmoidGradient([ones(m, 1) z2]);
-delta_1 = a1' * delta2(:, 2:end);
-delta_2 = a2' * delta3;
+delta2 = delta3 * Theta2 .* sigmoidGradient([zeros(m, 1) z2]);
+%delta_2 = a2' * delta3;
+%delta_1 = a1' * delta2(:, 2:end);
+%Theta2_grad = [ones(size(delta_2, 2), 1) delta_2'] ./ m;
+%Theta1_grad = [zeros(size(delta_1, 2), 1) delta_1'] ./ m;
+delta_2 = bia_a2' * delta3;
+delta_1 = bia_a1' * delta2(:, 2:end);
 
-Theta1_grad = [zeros(size(delta_1, 1), 1) delta_1] * 1. ./ m;
-Theta2_grad = [zeros(size(delta_2, 1)) delta_2] * 1. ./ m;
-Theta1_grad = delta_1 * 1. ./ m;
-Theta2_grad = delta_2 * 1. ./ m;
-Theta1_grad = Theta1_grad';
-Theta2_grad = Theta2_grad';
-size(Theta1_grad)
-size(Theta1)
+Theta2_grad = delta_2' ./ m;
+Theta1_grad = delta_1' ./ m;
 % =========================================================================
 
 % Unroll gradients
