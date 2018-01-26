@@ -1,4 +1,5 @@
 function [J, grad] = linearRegCostFunction(X, y, theta, lambda)
+
 %LINEARREGCOSTFUNCTION Compute cost and gradient for regularized linear 
 %regression with multiple variables
 %   [J, grad] = LINEARREGCOSTFUNCTION(X, y, theta, lambda) computes the 
@@ -19,16 +20,14 @@ grad = zeros(size(theta));
 %               You should set J to the cost and grad to the gradient.
 %
 
+h_x = X * theta;
+distance = h_x-y;
+temp = theta;
+temp(1) = 0;
+J = (sum(distance.^2) + lambda * sum(temp.^2)) / (2 * m);
 
-
-
-
-
-
-
-
-
-
+sum_of_grad = sum(X' * distance, 2) + lambda * temp;
+grad = sum_of_grad / m;
 
 % =========================================================================
 
