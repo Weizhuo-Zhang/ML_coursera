@@ -62,10 +62,12 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
-a1 = [ones(m, 1) X];
-z2 = a1 * Theta1';
-a2 = [ones(m, 1) sigmoid(z2)];
-z3 = a2 * Theta2';
+a1 = X;
+bia_a1 = [ones(m, 1) a1];
+z2 = bia_a1 * Theta1';
+a2 = sigmoid(z2);
+bia_a2 = [ones(m, 1) a2];
+z3 = bia_a2 * Theta2';
 a3 = sigmoid(z3);
 labels = repmat([1:size(Theta2, 1)], m, 1);
 y_label = bsxfun(@eq, labels, y);
@@ -79,6 +81,19 @@ tem_theta2 = Theta2(:, 2:end);
 reg_sum = lambda *  1. / (2. * m) * (sum(tem_theta1(:).^2) + sum(tem_theta2(:).^2));
 J = J + reg_sum;
 
+delta3 = a3 - y_label;
+delta2 = delta3 * Theta2 .* sigmoidGradient([zeros(m, 1) z2]);
+%delta_2 = a2' * delta3;
+%delta_1 = a1' * delta2(:, 2:end);
+%Theta2_grad = [ones(size(delta_2, 2), 1) delta_2'] ./ m;
+%Theta1_grad = [zeros(size(delta_1, 2), 1) delta_1'] ./ m;
+delta_2 = bia_a2' * delta3;
+delta_1 = bia_a1' * delta2(:, 2:end);
+
+Theta2_grad = delta_2' ./ m;
+Theta2_grad += lambda / m .* [zeros(size(Theta2, 1), 1) Theta2(:, 2:end)];
+Theta1_grad = delta_1' ./ m;
+Theta1_grad += lambda / m .* [zeros(size(Theta1, 1), 1) Theta1(:, 2:end)];
 % =========================================================================
 
 % Unroll gradients
