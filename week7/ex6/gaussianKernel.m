@@ -16,7 +16,11 @@ sim = 0;
 %
 %
 
+squareSigma = sigma^2;
 
+squareDistance = sum((x1 - x2) .^ 2);
+
+sim = exp(-1.0 / (2.0*squareSigma) * squareDistance);
 
 
 

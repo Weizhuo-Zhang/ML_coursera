@@ -23,10 +23,29 @@ sigma = 0.3;
 %        mean(double(predictions ~= yval))
 %
 
+%model= svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma));
+%predictions = svmPredict(model, Xval);
+%error = mean(double(predictions ~= yval));
+%range = [0.01, 0.03, 0.1, 0.3, 1, 3, 10, 30];
+%
+%for c = range
+%    for s = range
+%        model= svmTrain(X, y, c, @(x1, x2) gaussianKernel(x1, x2, s));
+%        predictions = svmPredict(model, Xval);
+%        new_error = mean(double(predictions ~= yval));
+%        c
+%        s
+%        new_error
+%        if new_error < error
+%            error = new_error;
+%            C = c;
+%            sigma = s;
+%        end
+%    end
+%end
 
-
-
-
+C = 1;
+sigma = 0.1;
 
 
 % =========================================================================
