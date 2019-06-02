@@ -21,7 +21,7 @@ def maybe_download(filename, work_directory):
 
 
 def _read32(bytestream):
-    dt = numpy.dtype(numpy.uint32).newbypteorder('>')
+    dt = numpy.dtype(numpy.uint32).newbyteorder('>')
     return numpy.frombuffer(bytestream.read(4), dtype=dt)[0]
 
 
@@ -53,7 +53,7 @@ def dense_to_one_hot(labels_dense, num_classes=10):
     return label_one_hot
 
 
-def extrct_labels(filename, ont_hot=False):
+def extract_labels(filename, one_hot=False):
     """Extract the labels into a 1D unit8 unumpy array [index]. """
     print('Extracting', filename)
     with gzip.open(filename) as bytestream:
