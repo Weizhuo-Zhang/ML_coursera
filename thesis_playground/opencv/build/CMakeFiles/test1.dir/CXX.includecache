@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/weizhuozhang/workspace/ML_coursera/thesis_playground/opencv/opencv_demo.cpp
+iostream
+-
+opencv4/opencv2/opencv.hpp
+-
+

@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/test1.dir/opencv_demo.cpp.o  -o test1 -lopencv_core -lopencv_highgui -lopencv_imgcodecs 
