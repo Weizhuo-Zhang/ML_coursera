@@ -1,0 +1,7 @@
+Image dataset:
+~/dataset/stanford_cars_dataset https://www.kaggle.com/jessicali9530/stanford-cars-dataset
+~/dataset/object_detection_crowdai Dataset1 https://github.com/udacity/self-driving-car/tree/master/annotations
+~/dataset/object_dataset Dataset2 https://github.com/udacity/self-driving-car/tree/master/annotations
+
+Video:
+~/dataset/relaxing_highway_traffic.mp4 https://www.youtube.com/watch?v=nt3D26lrkho
