@@ -1,0 +1,183 @@
+#!/usr/bin/env python
+# -*- mode: python -*-
+#=============================================================================
+#
+#  Copyright (c) 2016-2019 Qualcomm Technologies, Inc.
+#  All Rights Reserved.
+#  Confidential and Proprietary - Qualcomm Technologies, Inc.
+#
+#=============================================================================
+
+import random
+import math
+import logging
+import argparse
+import traceback
+import struct
+import caffe
+import caffe.proto.caffe_pb2 as caffe_pb2
+from google.protobuf import text_format
+import numpy
+import sys,os
+
+from snpe.converters.caffe import snpe_caffe_to_dlc
+from snpe.converters.common.utils import snpe_axis_transformer
+from snpe.converters.common.utils import snpe_udl_utils
+from snpe.converters.common.utils import snpe_validation_utils
+from snpe.converters.common.utils import snpe_converter_utils
+
+
+AxisAnnotation = snpe_axis_transformer.AxisAnnotation
+
+import MyUdlLayers
+
+def getArgs():
+    logger = logging.getLogger()
+    logger.debug("Parsing the arguments")
+
+    parser = argparse.ArgumentParser(
+        description=
+        'Script to convert caffe protobuf configuration into a DLC file.')
+    parser._action_groups.pop()
+
+    required = parser.add_argument_group('required arguments')
+    required.add_argument('-c', '--caffe_txt', type=str, required=True,
+                          help='Input caffe proto txt configuration file')
+
+    optional = parser.add_argument_group('optional arguments')
+
+
+    optional.add_argument('-b','--caffe_bin', type=str,
+                          help='Input caffe binary file containing the weight data')
+    optional.add_argument('-d', '--dlc', type=str,
+                          help='Output DLC file containing the model. If not specified, the data will be written to a file with same name as the caffetxt file with a .dlc extension')
+    optional.add_argument('--copyright_file', type=str,
+                          help='Path to copyright file. If provided, the content of the file will be added to the dlc.')
+    # The "omit_preprocessing" argument populates a variable called "enable_preprocessing" with its opposite value, so that
+    # we avoid "double-negatives" all over the code when using it.
+    optional.add_argument('--omit_preprocessing', dest="enable_preprocessing", action="store_const", const=False, default=True,
+                          help="If specified, converter will disable preprocessing specified by a data layer transform_param or any preprocessing command line options")
+    optional.add_argument('--encoding', type=str, choices=['argb32', 'rgba', 'nv21', 'bgr'], default='bgr',
+                          help='Image encoding of the source images. Default is bgr if not specified')
+    optional.add_argument('--input_size', type=int, nargs=2, metavar=('WIDTH','HEIGHT'),
+                          help='Dimensions of the source images for scaling, if different from the network input.')
+    optional.add_argument('--model_version', type=str,
+                          help='User-defined ASCII string to identify the model, only first 64 bytes will be stored')
+    optional.add_argument('--disable_batchnorm_folding', dest="disable_batchnorm_folding", action="store_true",
+                          help="If not specified, converter will try to fold batchnorm into previous convolution layer")
+    optional.add_argument('--in_layer', type=str, action='append', dest='input_layers',
+                          help='Name of the input layer')
+    optional.add_argument('--in_type', type=str, choices=['default', 'image', 'opaque'], action='append', dest='input_types',
+                          help='Type of data expected by input layer. Type is default if not specified.')
+    optional.add_argument('--validation_target', nargs=2, metavar=('RUNTIME_TARGET','PROCESSOR_TARGET'), default = [], action=snpe_validation_utils.ValidateTargetArgs,
+                          help="A combination of processor and runtime target against which model will be validated."
+                               "Choices for RUNTIME_TARGET: {cpu, gpu, dsp}."
+                               "Choices for PROCESSOR_TARGET: {snapdragon_801, snapdragon_820, snapdragon_835}."
+                               "If not specified, will validate model against {snapdragon_820, snapdragon_835} across all runtime targets.")
+    optional.add_argument('--strict', dest="enable_strict_validation", action="store_true", default=False,
+                          help="If specified, will validate in strict mode whereby model will not be produced if it violates constraints of the specified validation target."
+                               "If not specified, will validate model in permissive mode against the specified validation target.")
+    optional.add_argument("--verbose", dest="verbose", action="store_true",
+                          help="Verbose printing", default = False)
+
+    args = parser.parse_args()
+    if args.dlc is None:
+        filename, fileext = os.path.splitext(os.path.realpath(args.caffe_txt))
+        args.dlc = filename + ".dlc"
+
+    return args
+
+class UdlBlobMyCustomScale(object):
+    """
+    Wrapper class for MyCustomScale layer blob
+    """
+    def __init__(self, layer):
+        # MyCustomScale layer reuses the Caffe Scale layer params
+        caffe_params = layer.scale_param
+
+        # Initialize the SNPE params
+        snpe_params = MyUdlLayers.MyCustomScaleLayerParam()
+
+        # fill the params
+        snpe_params.bias_term = caffe_params.bias_term
+
+        # fill the weights
+        caffe_weights = utils.blob2arr(converter.weight_provider.weights_map[layer.name][0])
+        snpe_params.weights_dim = list(caffe_weights.shape)
+        snpe_params.weights_data = list(caffe_weights.astype(float).flat)
+
+        self._blob = snpe_params.Serialize()
+        self._size = len(self._blob)
+
+    def getBlob(self):
+        return self._blob
+
+    def getSize(self):
+        return self._size
+
+
+def udl_mycustomscale_func(layer, input_dims):
+    """
+    Conversion callback function for MyCustomScale layer
+    """
+    # Initialize blob for our custom layer with the wrapper class
+    blob = UdlBlobMyCustomScale(layer)
+    # Input and output dims are the same for MyCustomScale layer
+    return snpe_udl_utils.UdlBlobOutput(blob=blob, out_dims=input_dims)
+
+
+# Instance of Udl class for mycustomscale layer
+udl_mycustomscale = snpe_udl_utils.Udl(udl_mycustomscale_func)
+
+# Add SNPE udl's expected input axis order for 4D input and its output axis order
+udl_mycustomscale.addAxisOrder([AxisAnnotation.BATCH,AxisAnnotation.HEIGHT,AxisAnnotation.WIDTH,AxisAnnotation.CHANNEL],
+                              [AxisAnnotation.BATCH,AxisAnnotation.HEIGHT,AxisAnnotation.WIDTH,AxisAnnotation.CHANNEL])
+# Add SNPE udl's expected input axis order for 3D input and its output axis order
+udl_mycustomscale.addAxisOrder([AxisAnnotation.BATCH,AxisAnnotation.HEIGHT,AxisAnnotation.WIDTH],
+                              [AxisAnnotation.BATCH,AxisAnnotation.HEIGHT,AxisAnnotation.WIDTH])
+# Add SNPE udl's expected input axis order for 2D input and its output axis order
+udl_mycustomscale.addAxisOrder([AxisAnnotation.BATCH,AxisAnnotation.CHANNEL],
+                              [AxisAnnotation.BATCH,AxisAnnotation.CHANNEL])
+
+# As Caffe supports batch dimension, we have an additional dimension here
+# Add Caffe udl's expected input axis order for 4D input and its output axis order
+udl_mycustomscale.addSrcAxisOrder([AxisAnnotation.BATCH, AxisAnnotation.CHANNEL, AxisAnnotation.HEIGHT,AxisAnnotation.WIDTH],
+                                 [AxisAnnotation.BATCH, AxisAnnotation.CHANNEL, AxisAnnotation.HEIGHT,AxisAnnotation.WIDTH])
+# Add Caffe udl's expected input axis order for 3D input and its output axis order
+udl_mycustomscale.addSrcAxisOrder( [AxisAnnotation.CHANNEL,AxisAnnotation.HEIGHT,AxisAnnotation.WIDTH],
+                                  [AxisAnnotation.CHANNEL,AxisAnnotation.HEIGHT,AxisAnnotation.WIDTH])
+# Add Caffe udl's expected input axis order for 2D input and its output axis order
+udl_mycustomscale.addSrcAxisOrder([AxisAnnotation.BATCH, AxisAnnotation.CHANNEL],
+                                 [AxisAnnotation.BATCH, AxisAnnotation.CHANNEL])
+
+# UDL layer name to UDL class map
+udl_supported_types = {
+    'MyCustomScale': udl_mycustomscale
+}
+
+
+if __name__ == '__main__':
+    utils = snpe_converter_utils.SNPEUtils()
+    args = getArgs()
+    snpe_converter_utils.setUpLogger(args.verbose)
+
+    converter = snpe_caffe_to_dlc.CaffeSnapDnnConverter()
+    if not converter.set_udls(udl_supported_types):
+        print('Failed to set UDL factory')
+        sys.exit(1)
+    try:
+        converter.convert( args.caffe_txt,
+                           args.caffe_bin,
+                           args.dlc,
+                           args.copyright_file,
+                           args.encoding,
+                           args.input_size,
+                           args.input_layers,
+                           args.input_types,
+                           args.enable_preprocessing,
+                           args.model_version,
+                           args.disable_batchnorm_folding )
+    except Exception as e:
+        print('Encountered Error' + str(e))
+        sys.exit(1)
+    sys.exit(0)

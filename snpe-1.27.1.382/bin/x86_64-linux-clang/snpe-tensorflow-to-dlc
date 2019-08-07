@@ -1,0 +1,115 @@
+#!/usr/bin/env python
+# =============================================================================
+#
+#  Copyright (c) 2015-2016,2018-2019 Qualcomm Technologies, Inc.
+#  All Rights Reserved.
+#  Confidential and Proprietary - Qualcomm Technologies, Inc.
+#
+# =============================================================================
+
+import argparse
+import logging
+import os
+import sys
+import traceback
+import tensorflow as tf
+
+try:
+    from snpe.dlc_utils import modeltools
+except ImportError as ie:
+    print("Failed to find necessary package:")
+    print(str(ie))
+    print("Please ensure that $SNPE_ROOT/lib/python is in your PYTHONPATH")
+    sys.exit(1)
+
+from snpe.converters.tensorflow.converter import DlcConverter
+from snpe.converters.tensorflow.loader import ModelLoader
+from snpe.converters.tensorflow.util import ConverterError
+from snpe.converters.common.utils import snpe_converter_utils
+
+
+def __setup_logger(verbose):
+    formatter = '%(asctime)s - %(lineno)d - %(levelname)s - %(message)s'
+    formatter = logging.Formatter(formatter)
+    lvl = logging.WARN
+    if verbose:
+        lvl = logging.DEBUG
+    stream_handler = logging.StreamHandler()
+    stream_handler.setLevel(lvl)
+    stream_handler.setFormatter(formatter)
+
+    logger = logging.getLogger()
+    logger.setLevel(lvl)
+    logger.addHandler(stream_handler)
+    return logger
+
+
+def __parse_args():
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        description="Script to convert a TensorFlow graph into a DLC file.")
+    parser._action_groups.pop()
+
+    required = parser.add_argument_group('required arguments')
+    required.add_argument('--graph', type=str, required=True,
+                          help='Path to TensorFlow graph def (.pb saved as binary) or graph meta (.meta) file.')
+    required.add_argument('-i', '--input_dim', nargs=2, action='append', required=True, metavar=('INPUT_NAME','INPUT_DIM'),
+                          help='The names and dimensions of the network input layers specified in the format "input_name" comma-separated-dimensions, for example: "data" 1,224,224,3. Note that the quotes should always be included in order to handle special characters, spaces, etc. For multiple inputs specify multiple --input_dim on the command line like: --input_dim "data1" 1,224,224,3 --input_dim "data2" 1,50,100,3.')
+    required.add_argument('--out_node', type=str, required=True, action='append',
+                          help='Name of the graph\'s output node.')
+
+
+    optional = parser.add_argument_group('optional arguments')
+
+    optional.add_argument('--dlc', type=str,
+                          help='Path to DLC file to be generated.')
+    optional.add_argument('--copyright_file', type=str,
+                          help='Path to copyright file. If provided, the content of the file will be added to the dlc.')
+    # Note that setting the model version is not supported in the 0.12.0 version of the SNPE-R model tools.
+    # This appears to be QCT specific code, so I'm leaving the code in but commenting out the actual set in converter.py
+    # We can sort out whether SNPE-R should support this post 0.12.0
+    optional.add_argument('--model_version', type=str,
+                        help='User-defined ASCII string to identify the model, only first 64 bytes will be stored')
+    optional.add_argument('--in_type', type=str, choices=['default', 'image'], action='append',
+                          help='Type of data expected by input layer. Type is default if not specified.')
+    optional.add_argument("--allow_unconsumed_nodes", action="store_true",
+                          help="Uses a relaxed graph node to layer mapping algorithm which may not use "
+                               "all graph nodes during conversion while retaining structural integrity.",
+                          default=False)
+    optional.add_argument("--verbose", dest="verbose", action="store_true",
+                          help="Verbose printing", default=False)
+
+    args = parser.parse_args()
+
+    if args.dlc is None:
+        filename, _ = os.path.splitext(os.path.realpath(args.graph))
+        args.dlc = filename + ".dlc"
+
+    return args
+
+
+def main():
+    args = __parse_args()
+    logger = __setup_logger(args.verbose)
+    session = tf.Session(config=tf.ConfigProto(allow_soft_placement=True))
+    with session.as_default():
+        try:
+            (in_nodes, in_dims) = list(zip(*args.input_dim))
+            loader = ModelLoader(logger)
+            model = loader.load(args.graph, in_nodes, in_dims, args.in_type, args.out_node, session)
+
+            converter_command = snpe_converter_utils.sanitize_args(args, args_to_ignore=['graph', 'd', 'dlc'])
+            converter = DlcConverter(model, not args.allow_unconsumed_nodes)
+            converter.convert(args.dlc, args.copyright_file, args.model_version, converter_command)
+            logger.info("Model conversion completed!")
+        except ConverterError as e:
+            logger.error("Conversion failed: {}".format(str(e)))
+            sys.exit(1)
+        except Exception as e:
+            logger.error("Encountered Error: {}".format(str(e)))
+            traceback.print_exc()
+            sys.exit(1)
+
+if __name__ == '__main__':
+    main()
+
