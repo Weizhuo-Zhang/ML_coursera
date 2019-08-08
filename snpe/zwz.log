@@ -1,0 +1,184 @@
+Using Anaconda API: https://api.anaconda.org
+Packages:
+     Name                      |  Version | Package Types   | Platforms       | Builds    
+     ------------------------- |   ------ | --------------- | --------------- | ----------
+     0x1997/protobuf           |  3.5.0.1 | conda           | linux-64        | py36_0, py36hea2d51b_0
+                                          : Protocol Buffers - Google's data interchange format.
+     ActivisionGameScience/protobuf |    3.5.1 | conda           | linux-64, osx-64 | py36_0, py27_0, py35_0, py34_0
+     DaniM/protobuf            |    3.0.2 | conda           | linux-64        | 0         
+     Esri/libprotobuf          |    3.6.1 | conda           | win-64          | arcgispro_0
+                                          : Protocol Buffers -- Google's data interchange format
+     GlaxoSmithKline/protobuf  |    3.4.0 | conda           | linux-64        | py27h30328f7_0, py27_0
+     KarthikM/protobuf         |    3.6.1 | conda           | linux-ppc64le   | py36_0, py27hf484d3e_0, py35_0, py27_0
+                                          : Protocol Buffers - Google's data interchange format.
+     STR/libprotobuf           |    2.5.0 | conda           | osx-64          | 0         
+     SmartAg/protobuf          |    3.3.0 | conda           | linux-aarch64   | 0         
+     Unidata/protobuf          |  3.0.0a3 | conda           | linux-64, win-32, win-64, linux-32, osx-64 | py34_0, py27_0
+                                          : Protocol Buffers
+     alefnula/protobuf         |    2.5.0 | conda           | osx-64          | py27_0    
+                                          : Protocol Buffers
+     anaconda/libprotobuf      |    3.8.0 | conda           | linux-ppc64le, linux-64, win-32, osx-64, linux-32, win-64 | ha5b00b8_0, h5b8497f_0, h2cd40f5_0, h1a1b453_0, vc9_0, hdbcaa40_0, h326466f_0, hd9629dc_0, hd408876_0, h7bd577a_0, hd26fab5_0, 0, h3dba5dd_0, h6f1eeef_0, h9e9bada_0, hde7a951_0, vc14_0, he0781b1_0
+                                          : Protocol Buffers - Google's data interchange format. C++ Libraries
+     anaconda/libprotobuf-static |    3.7.1 | conda           | linux-ppc64le, linux-64, win-32, osx-64, linux-32, win-64 | hd408876_0, hd9629dc_0, h7bd577a_0
+                                          : Protocol Buffers - Google's data interchange format. C++ Libraries
+     anaconda/protobuf         |    3.8.0 | conda           | linux-ppc64le, linux-64, win-32, osx-64, linux-32, win-64 | py36h07fa351_0, py35h6538335_1, py35h6538335_0, py36_0, py37h0a44026_0, py35he025d50_0, py36h0a44026_0, py35h880e2fd_0, py37h0a44026_1, py37h33f27b4_0, py37hf484d3e_0, py37hf484d3e_1, py36h314970b_0, py27h8fe9a11_0, py35h80e44d2_0, py27_1, py27_0, py36h060c948_0, py35h9d33684_0, py36h1877b12_0, py35h58370bd_0, py37h6538335_1, py27h0a44026_0, py27h2ba6a9c_0, py36he025d50_0, py27h66c1d77_0, py36h306e679_0, py27he6710b0_0, py27hf484d3e_1, py37he6710b0_0, py35hf484d3e_0, py27hf484d3e_0, py27hc56fc5f_1, py27hc56fc5f_0, py36hf484d3e_1, py36hf484d3e_0, py36h33f27b4_0, py34_1, py34_0, py36he6710b0_0, py36ha66a75b_0, py36h0a44026_1, py27h7448ec6_0, py27h0a44026_1, py36h6538335_0, py36h6538335_1, py35h0a44026_0, py35he6b9134_0, py37he025d50_0, py35_1, py35_0, py35h1b611f0_0
+                                          : Protocol Buffers - Google's data interchange format.
+     anne/protobuf             | 3.0.0b2.post2 | conda           | linux-64, osx-64 | py35_0, py34_0
+                                          : Protocol Buffers
+     asmeurer/protobuf         |    2.5.0 | conda           | osx-64          | py26_0, py27_0
+                                          : Protocol Buffers
+     auto/protobuf             |    2.5.0 | conda           | linux-32        | py27_0    
+                                          : Protocol Buffers
+     auto/protobuf.socketrpc   |    1.3.2 | conda           | linux-64        | py27_0    
+                                          : http://code.google.com/p/protobuf-socket-rpc/
+     auto/protobuf_socket_rpc  |      1.3 | conda           | linux-64        | py27_0    
+                                          : http://code.google.com/p/protobuf-socket-rpc/
+     babbel/protobuf           | 3.0.0b2.post2 | conda           | linux-64, osx-64 | py35_0, py34_0
+                                          : Protocol Buffers
+     balast/protobuf3-to-dict  |    0.1.5 | conda           | linux-64        | py36_0    
+                                          : Ben Hodgson: A teeny Python library for creating Python dicts from protocol buffers and the reverse. Useful as an intermediate step before serialisation (e.g. to JSON). Kapor: upgrade it to PB3 and PY3, rename it to protobuf3-to-dict
+     barnybug/protobuf         |    2.5.0 | conda           | linux-64        | py27_0    
+                                          : Protocol Buffers
+     bioconda/bioconductor-rprotobuflib |    1.6.0 | conda           | linux-64, osx-64 | r351hfc679d8_0, r351h0a44026_0, r351hf484d3e_0, r36he1b5a44_1, r3.4.1_0, r341hfc679d8_0, r36h6de7cb9_1
+                                          : This package provides the headers and static library of Protocol buffers 2.6.0 for other R packages to compile and link against.
+     bkreider/libcprotobuf     |    3.0.0 | conda           | linux-64, osx-64 | 0         
+     bkreider/protobuf         |    3.0.0 | conda           | osx-64          | py27_0    
+     bkreider/protobuf-bkreider |    2.5.0 | conda           | osx-64          | 0         
+                                          : http://protobuf.googlecode.com
+     bobpkgs/protobuf          |  3.0.0b2 | conda           | linux-64        | py27_0    
+                                          : Protocol Buffers
+     c3i_test2/libprotobuf     |    3.6.0 | conda           | linux-ppc64le, linux-64, win-32, osx-64, linux-32, win-64 | ha5b00b8_0, h31184c6_0, h5b8497f_0, h9eb5bc5_0, h1a1b453_0, h7194288_0, h41201fa_0, h326466f_0, h9f75f6c_0, ha8def94_0, hd9629dc_0, hc53aa0e_0, hdbcaa40_0, h3dba5dd_0, h70f84a3_0, h8df8e75_0, h9e9bada_0, h7f11767_0, h0a83700_0
+                                          : Protocol Buffers - Google's data interchange format. C++ Libraries
+     c3i_test2/protobuf        |    3.6.0 | conda           | linux-ppc64le, linux-64, win-32, osx-64, linux-32, win-64 | py35h85e138d_0, py36h07fa351_0, py27h4f9f230_0, py36h20ff55c_0, py35hc812aef_0, py36h79cffe1_0, py36haa67c46_0, py37h0a44026_0, py35h580b643_0, py36he6d194b_0, py36hd9e2b94_0, py37hf484d3e_0, py36h314970b_0, py27h8fe9a11_0, py35h68c2817_0, py27h300dfd9_0, py36h0a44026_0, py35he025d50_0, py36h060c948_0, py35hf484d3e_0, py35h9d33684_0, py36h1877b12_0, py35h58370bd_0, py27h665fa65_0, py36he020d83_0, py27h0a44026_0, py27h2ba6a9c_0, py35h8e7b92c_0, py35h5df2e69_0, py35h880e2fd_0, py36he025d50_0, py35h1e9ce9c_0, py36h5c38864_0, py36h306e679_0, py35h0a44026_0, py36hc47fae3_0, py35h7d6c099_0, py27hf484d3e_0, py35h68ca82a_0, py35hffc12e7_0, py27h75d26cd_0, py27h66c1d77_0, py36hf484d3e_0, py36haafecfa_0, py35h4574c6d_0, py36hc53af4e_0, py36hdb9abf4_0, py35he6b9134_0, py35hb32a74b_0, py37he025d50_0, py35h1b611f0_0, py27he55ed3a_0
+                                          : Protocol Buffers - Google's data interchange format.
+     cclements/libprotobuf     |    3.5.1 | conda           | linux-64        | h85a25e4_0
+                                          : Protocol Buffers - Google's data interchange format. C++ Libraries
+     cclements/protobuf        |    3.5.1 | conda           | linux-64        | py27hc4f7018_2
+                                          : Protocol Buffers - Google's data interchange format.
+     cf-cb3/libprotobuf        |    3.5.2 | conda           | linux-ppc64le, linux-64, win-32, linux-32 | hdbcaa40_0, he51fdeb_0, h95ae18b_0
+                                          : Protocol Buffers - Google's data interchange format. C++ Libraries
+     chuckchen/protobuf        |  3.0.0a3 | conda           | win-64          | py27_0    
+                                          : Protocol Buffers
+     conda-forge/libprotobuf   |    3.9.1 | conda           | linux-ppc64le, linux-64, win-32, linux-aarch64, osx-64, win-64 | h1a1b453_1000, h1a1b453_1001, hdbcaa40_0, hdbcaa40_1, vc14_0, he51fdeb_1, 0, hdbcaa40_1000, hdbcaa40_1001, hd28b015_1, hd28b015_0, h95ae18b_1, hfbae3c0_2, hfbae3c0_0, hd9629dc_1000, hd9629dc_1001, hd9629dc_0, hd9629dc_1, h1a1b453_2, vc9_0, h1a1b453_0, h1a1b453_1, h8b12597_2, h8b12597_0, hb61f777_0
+                                          : Protocol Buffers - Google's data interchange format. C++ Libraries
+     conda-forge/protobuf      |    3.9.1 | conda           | linux-64, win-32, osx-64, win-64 | py27h0a44026_1001, py36he1b5a44_0, py37h6de7cb9_1, py35_vc14_0, py35_vc14_1, py35_vc14_2, py35_vc14_3, py35_vc14_4, py36_4, py36h6de7cb9_1, py36h6de7cb9_0, py35he025d50_0, py36h0a44026_1001, py37hfc679d8_1, py37h0a44026_0, py36_vc14_4, py37hf484d3e_0, py36_vc14_1, py36_vc14_0, py36_vc14_3, py36_vc14_2, py36h0a44026_0, py27_4, py27_3, py27_2, py27_1, py27_0, py37h0a44026_1001, py36he1b5a44_1, py37he1b5a44_1, py35hd28b015_0, py36hf484d3e_1001, py36_1, py36he025d50_1001, py35he51fdeb_0, py36_0, py27h6de7cb9_0, py27h6de7cb9_1, py27hfc679d8_0, py27hfc679d8_1, py27h0a44026_0, py36_3, py27hd28b015_0, py36_2, py36he025d50_0, py36he025d50_1, py27hf484d3e_1001, py37hf484d3e_1001, py27h95ae18b_0, py37he1b5a44_0, py27hf484d3e_0, py36hf484d3e_0, py34_vc10_3, py34_vc10_2, py34_vc10_1, py34_vc10_0, py36hfc679d8_0, py36hfc679d8_1, py37h6de7cb9_0, py37he025d50_0, py35hfc679d8_0, py34_3, py34_2, py34_1, py34_0, py36hd28b015_0, py27he1b5a44_1, py27he1b5a44_0, py36he51fdeb_0, py27_vc9_0, py27_vc9_1, py27_vc9_2, py27_vc9_3, py27_vc9_4, py37he025d50_1, py37he025d50_1001, py35_4, py35_2, py35_3, py35_0, py35_1
+                                          : Protocol Buffers - Google's data interchange format.
+     csfoo/protobuf-cpp        |    2.6.1 | conda           | linux-64        | py27_0    
+                                          : Protocol Buffers
+     dhirschfeld/protobuf      | 3.0.0a3.post418+g0cb84ee | conda           | win-64          | py27_0, py34_0
+                                          : https://code.google.com/p/protobuf/
+     distributions/libprotobuf |    2.5.0 | conda           | linux-64, osx-64 | 0         
+                                          : Protocol Buffers C library/compiler
+     distributions/protobuf    |    2.5.0 | conda           | linux-64, osx-64 | py27_0    
+                                          : Protocol Buffers
+     dsm/protobuf              | 3.1.0.post1 | conda           | win-64          | py35_0    
+     eklitzke/protobuf         |    3.4.0 | conda           | linux-64        | py36he90f0b6_0
+                                          : Protocol Buffers
+     eugene/protobuf           | 2.5.0.post512 | conda           | win-32, osx-64, win-64 | py26_0, py27_0
+                                          : https://code.google.com/p/protobuf/
+     ezyang/protobuf           |    3.4.0 | conda           | linux-64        | py36h80cb6a7_0, py35h342360d_0, py2hec123ea_0, py27hd9f98bc_0, py27h42e5a1b_0, py35h3280778_0, py36hfc70fc5_0, py35h283bad8_0, py36h3ef2864_0
+                                          : Protocol Buffers - Google's data interchange format.
+     furmanek/libprotobuf      |    3.5.1 | conda           | linux-ppc64le   | hb48600e_0
+                                          : Protocol Buffers - Google's data interchange format
+     furmanek/protobuf         |    3.5.1 | conda           | linux-ppc64le   | py27h251b4b4_0
+                                          : Protocol Buffers - Google's data interchange format.
+     gaiar/libprotobuf         |    3.7.1 | conda           | linux-aarch64, linux-armv7l | 0, hf484d3e_0
+                                          : Protocol Buffers - Google's data interchange format. C++ Libraries
+     gaiar/protobuf            |    3.7.1 | conda           | linux-aarch64, linux-armv7l | py36_0, py37hf484d3e_0, py36hf484d3e_0, py35_0
+                                          : Protocol Buffers - Google's data interchange format.
+     hajapy/protobuf           |    3.3.0 | conda           | linux-64, osx-64 | py36_0, py35_0, py27_0
+                                          : Protocol Buffers - Google's data interchange format.
+     hargup/protobuf           |          | conda           | linux-64, noarch | py_0, py27_0
+                                          : Protocol Buffers
+     ijstokes/protobuf         | 3.0.0b2.post2 | conda           | linux-64        | py35_3    
+     intel/protobuf            |    3.5.2 | conda           | linux-64        | py36_intel_2, py36_intel_0, py27_intel_0, py27_intel_1, py27_intel_2, py35_intel_1, py35_intel_0
+                                          : Protocol Buffers - Google's data interchange format
+     jessemapel/libprotobuf    |    3.5.2 | conda           | linux-64        | 0         
+                                          : Protocol Buffers - Google's data interchange format. C++ Libraries
+     jjangsangy/protobuf       |    3.2.0 | conda, pypi     | linux-64        | 0         
+     jjh_cio_testing/libprotobuf |          | conda           | linux-64        | 0         
+                                          : Protocol Buffers - Google's data interchange format
+     jjh_cio_testing/protobuf  |          | conda           | linux-64        | py36_0, py35_0, py27_0
+                                          : Protocol Buffers - Google's data interchange format
+     jjh_ppc64le/libprotobuf   |    3.4.0 | conda           | linux-ppc64le   | 0, hd26fab5_0
+                                          : Protocol Buffers - Google's data interchange format
+     jjh_ppc64le/protobuf      |    3.4.0 | conda           | linux-ppc64le   | py35h80e44d2_0, py27_0, py36_0, py27h7448ec6_0, py36ha66a75b_0, py35_0
+                                          : Protocol Buffers - Google's data interchange format
+     jjhelmus/protobuf         |    3.1.0 | conda           | linux-64, osx-64 | py27_1, py34_1, py34_0, py27_0, py35_0, py35_1
+                                          : Protocol Buffers
+     jlaura/protobuf           |  3.0.0b2 | conda           | linux-64, win-64, osx-64 | py34_0, py35_0, py35_1
+                                          : Protocol Buffers
+     jodokaast/protobuf        |    0.1.1 | conda           | win-64          | py27_0    
+     jpeschel/protobuf         |    2.4.1 | conda           | linux-64        | py27_0    
+     jpeschel/protobuf-qt      |    2.5.0 | conda           | linux-64        | py27_0    
+                                          : ´google protocol buffers library for qt devolopment´
+     kalev/libprotobuf         |    2.5.0 | conda           | win-64          | py27_1    
+                                          : A language-neutral, platform-neutral extensible mechanism for serializing structured data.
+     kevin-keraudren/protobuf  |  3.0.0b2 | conda           | linux-64        | py35_1    
+     kitware-danesfield-df/libprotobuf |    3.6.0 | conda           | linux-64        | hdbcaa40_0
+                                          : Protocol Buffers - Google's data interchange format. C++ Libraries
+     kitware-danesfield-df/protobuf |    3.6.0 | conda           | linux-64        | py36hf484d3e_0
+                                          : Protocol Buffers - Google's data interchange format.
+     lruhlen/protobuf          | 3.0.0b2.post2 | conda           | linux-64        | py27_0    
+                                          : Protocol Buffers
+     marta-sd/protobuf         |    3.2.0 | conda           | linux-64        | py36_0, py35_0
+                                          : Protocol Buffers
+     mhworth/protobuf          |  3.0.0a3 | conda           | linux-64, osx-64 | py27_1, py27_0
+                                          : Protocol Buffers
+     minrk/libprotobuf         |    2.6.1 | conda           | linux-64, osx-64 | 0         
+     miovision/protobuf        |    3.1.0 | conda           | linux-64, osx-64 | py35_0    
+     msarahan/libprotobuf      |    3.1.0 | conda           | linux-64        | 0         
+     msarahan/protobuf         |    3.1.0 | conda           | linux-64        | py36_0, py27_0
+                                          : Protocol Buffers
+     mwojcikowski/protobuf     |    3.2.0 | conda           | linux-64        | py36_0, py35_0
+                                          : Protocol Buffers
+     nehaljwani/libprotobuf    |    3.2.0 | conda           | win-32, win-64, osx-64 | 0, vc14_0, vc9_0
+                                          : Protocol Buffers - Google's data interchange format
+     nehaljwani/protobuf       |    3.2.0 | conda           | win-32, win-64, osx-64 | py36_0, py35_0, py27_0
+                                          : Protocol Buffers - Google's data interchange format
+     oghinet/protobuf          |  3.0.0b4 | conda           | osx-64          | py35_0    
+     pdrops/protobuf           |    2.5.0 | conda           | linux-64, osx-64 | py27_0    
+                                          : Protocol Buffers
+     prigoyal/protobuf         |    3.4.1 | conda           | linux-64        | h227bba4_2, h21cfbc1_2, hf659299_2
+                                          : Protocol Buffers - Google's data interchange format
+     probcomp/libprotobuf      |    2.6.1 | conda           | linux-64        | 0         
+                                          : Protocol Buffers C library/compiler
+     quasiben/libprotobuf      |    3.1.0 | conda           | osx-64          | 0         
+     quasiben/protobuf         |    2.5.0 | conda           | linux-64        | py27_0    
+     rogerramos/protobuf       |    3.3.0 | conda           | linux-64        | py27_3    
+                                          : Protocol Buffers
+     sarikan/protobuf          |    2.5.0 | conda           | linux-64        | py27_0    
+                                          : Protocol Buffers
+     scw/libprotobuf           |    3.6.1 | conda           | win-64          | arcgispro_0
+                                          : Protocol Buffers -- Google's data interchange format
+     softwaremechanic/protobuf |  3.0.0b2 | conda           | linux-64        | py35_0    
+                                          : Protocol Buffers
+     steerapi/protobuf         |  3.0.0a3 | conda           | win-64          | py27_1    
+                                          : Protocol Buffers
+     stephentu/libprotobuf     |    2.5.0 | conda           | linux-64, osx-64 | 0         
+                                          : Protocol Buffers C library/compiler
+     stephentu/protobuf        |    2.5.0 | conda           | linux-64, osx-64 | py27_0    
+                                          : Protocol Buffers
+     stuwilkins/protobuf       |    2.6.0 | conda           | linux-64        | py27_0    
+                                          : Protocol Buffers
+     tacaswell/protobuf        | 3.0.0.beta1.postbzl+fix44 | conda           | linux-64        | py34_0, 44_g8b31d74_py34, 44_g8b31d74_py35, py27_0
+                                          : Protocol Buffers
+     tc-test-org/protobuf      |    3.4.1 | conda           | linux-64        | h21cfbc1_2
+                                          : Protocol Buffers - Google's data interchange format
+     tensorcomp/protobuf       |    3.4.1 | conda           | linux-64        | h21cfbc1_2, hf659299_2
+                                          : Protocol Buffers - Google's data interchange format
+     test_org_002/libprotobuf  |    3.0.0 | conda           | []              | 0         
+     test_org_002/protobuf     |    3.0.0 | conda           | []              | py27_1, py34_1, py34_0, py27_0, py35_0, py35_1
+     ufechner/protobuf-linux64 |    2.5.0 | conda           | linux-64        | py27_0    
+                                          : Protocol Buffers
+     usgs-astrogeology/libprotobuf |    3.5.2 | conda           | linux-64        | h6bb024c_0
+                                          : Protocol Buffers - Google's data interchange format. C++ Libraries
+     usgs-astrogeology/protobuf |    3.5.2 | conda           | linux-64        | py36h6bb024c_0
+                                          : Protocol Buffers - Google's data interchange format.
+     willyd/protobuf           |    3.5.0 | conda           | linux-64, win-64 | py27_vc12_1, py35_vc14_1, py36h76e2b0a_0, py27_vc9_1, py27_vc12_0
+                                          : Protocol Buffers - Google's data interchange format.
+     xxbandy123/protobuf       |    3.5.2 | conda           | linux-64        | py27_0    
+     yijunyu/protobuf          |    3.6.1 | conda           | linux-64, osx-64 | 0         
+Found 100 packages
+
+Run 'anaconda show <USER/PACKAGE>' to get installation details
