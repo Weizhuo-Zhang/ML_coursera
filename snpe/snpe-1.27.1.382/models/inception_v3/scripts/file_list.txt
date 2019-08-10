@@ -1,0 +1,10 @@
+/data/dataset/snpe_stanford_tiny_dataset/raw/01010.raw
+/data/dataset/snpe_stanford_tiny_dataset/raw/01011.raw
+/data/dataset/snpe_stanford_tiny_dataset/raw/01012.raw
+/data/dataset/snpe_stanford_tiny_dataset/raw/01013.raw
+/data/dataset/snpe_stanford_tiny_dataset/raw/01014.raw
+/data/dataset/snpe_stanford_tiny_dataset/raw/01015.raw
+/data/dataset/snpe_stanford_tiny_dataset/raw/01016.raw
+/data/dataset/snpe_stanford_tiny_dataset/raw/01017.raw
+/data/dataset/snpe_stanford_tiny_dataset/raw/01018.raw
+/data/dataset/snpe_stanford_tiny_dataset/raw/01019.raw
