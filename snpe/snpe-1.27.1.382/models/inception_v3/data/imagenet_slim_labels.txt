@@ -1,0 +1,10 @@
+cropped/01010.raw
+cropped/01011.raw
+cropped/01012.raw
+cropped/01013.raw
+cropped/01014.raw
+cropped/01015.raw
+cropped/01016.raw
+cropped/01017.raw
+cropped/01018.raw
+cropped/01019.raw

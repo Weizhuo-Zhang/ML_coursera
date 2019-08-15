@@ -1,0 +1,10 @@
+/data/snpe_zwz/android_snpe_aarch64/snpe_stanford_tiny_dataset/raw/01010.raw
+/data/snpe_zwz/android_snpe_aarch64/snpe_stanford_tiny_dataset/raw/01011.raw
+/data/snpe_zwz/android_snpe_aarch64/snpe_stanford_tiny_dataset/raw/01012.raw
+/data/snpe_zwz/android_snpe_aarch64/snpe_stanford_tiny_dataset/raw/01013.raw
+/data/snpe_zwz/android_snpe_aarch64/snpe_stanford_tiny_dataset/raw/01014.raw
+/data/snpe_zwz/android_snpe_aarch64/snpe_stanford_tiny_dataset/raw/01015.raw
+/data/snpe_zwz/android_snpe_aarch64/snpe_stanford_tiny_dataset/raw/01016.raw
+/data/snpe_zwz/android_snpe_aarch64/snpe_stanford_tiny_dataset/raw/01017.raw
+/data/snpe_zwz/android_snpe_aarch64/snpe_stanford_tiny_dataset/raw/01018.raw
+/data/snpe_zwz/android_snpe_aarch64/snpe_stanford_tiny_dataset/raw/01019.raw
