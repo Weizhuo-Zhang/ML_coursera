@@ -1,6 +1,9 @@
-tensorflow_demo/.idea/
-tensorflow_demo/.ipynb_checkpoints/
-tensorflow_demo/__pycache__/
+.ipynb_checkpoints
+__pycache__
 *.h5
-.idea
+.idea/
 *.dlc
+.gradle/
+build/
+snpe/snpe-1.27.1.382/examples/android/image-classifiers/app/libs/snpe-release.aar
+snpe/snpe-1.27.1.382/examples/android/image-classifiers/app/src/main/res/raw/
